@@ -1,5 +1,19 @@
 <?php
-require_once('index.php');
+$dbname = 'bob-vance';
+$user = 'bit_academy';
+$pass = 'bit';
+$host = 'localhost';
+$dsn = sprintf("mysql:host=$host;dbname=$dbname;charset=UTF8", $user, $dbname);
+
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+];
+
+$conn = new PDO($dsn, $user, $pass, $options);
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 $params = array();
 $tablecoolkasten = true;
